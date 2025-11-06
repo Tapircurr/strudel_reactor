@@ -45,7 +45,7 @@ export default function StrudelDemo() {
 
     const [vol, setVol] = useState(1)
 
-    const [speed, setSpeed] = useState(120)
+    const [speed, setSpeed] = useState("140/60/4")
 
     const [state, setState] = useState("stop")
 
@@ -63,6 +63,7 @@ useEffect(() => {
 
     if (!hasRun.current) {
         document.addEventListener("d3Data", handleD3Data);
+        document.body.style = 'background: #212529;';
         console_monkey_patch();
         hasRun.current = true;
         //Code copied from example: https://codeberg.org/uzu/strudel/src/branch/main/examples/codemirror-repl
@@ -126,6 +127,8 @@ useEffect(() => {
                                 volChange={vol} onVolChange={(e) => setVol(e.target.value)}
                                 speedChange={speed} onSpeedChange={(e) => setSpeed(e.target.value)}
                                 instruments={instruments} onInstrumentsChange={(e) => {
+                                    //If instrument is on instruments list remove it
+                                    //otherwise add it
                                     if (instruments.includes(e.target.value)) {
                                         var index = instruments.indexOf(e.target.value);
                                         if (index !== -1) {
