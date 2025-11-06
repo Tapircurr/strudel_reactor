@@ -150,7 +150,7 @@ useEffect(() => {
             <div className="container-fluid bg-dark text-light">
                 <h2>Strudel Demo</h2>
                 <div className="row">
-                    <div className="col-md-8 bg-dark" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                    <div className="col-md-4 bg-dark" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                         <PreTextArea defaultVal={songText} onChange={(e) => setSongText(e.target.value)} />
                     </div>
                     <div className="col-md-4">
@@ -160,14 +160,8 @@ useEffect(() => {
                             <br />
                             <PlayButtons onPlay={handlePlay} onStop={handleStop} />
                         </nav>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <div id="editor" />
-                        <div id="output" />
-                    </div>
-                    <div className="col-md-4">
+                        </div>
+                        <div className="col-md-4">
                             <PlayControls
                                 volChange={vol} onVolChange={(e) => setVol(e.target.value)}
                                 speedChange={speed} onSpeedChange={(e) => setSpeed(e.target.value)}
@@ -182,8 +176,15 @@ useEffect(() => {
                                     }
                                 }
                                 }
-                        />
+                            />
+                        </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                        <div id="editor" />
+                        <div id="output" />
                     </div>
+                    
                 </div>
             </div>
             <canvas id="roll"></canvas>
