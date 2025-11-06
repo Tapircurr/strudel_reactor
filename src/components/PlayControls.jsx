@@ -9,7 +9,7 @@ function PlayControls({ volChange, onVolChange, speedChange, onSpeedChange, inst
                 <div className="input-group mb-3">
 
                     <span className="input-group-text" id="speed_label">Set Speed</span>
-                    <input type="text" className="form-control" id="speedInput" onChange={onSpeedChange} placeholder="120" aria-label="speed" aria-describedby="speed_label" />
+                    <input type="text" className="form-control" id="speedInput" onChange={onSpeedChange} placeholder="140/60/4" aria-label="speed" aria-describedby="speed_label" />
                 </div>
 
                 {/* Volume */}
