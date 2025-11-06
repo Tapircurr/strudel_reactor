@@ -19,10 +19,7 @@ function PlayControls({ volChange, onVolChange, speedChange, onSpeedChange, inst
                 {/* Instruments */}
                 {
                     totalInstruments.map((instrument, key) => {
-                        if (key !== 0) {
-
-                            return <Instrument name={instrument} key={key} onInstrumentsChange={onInstrumentsChange} instruments={instruments} />
-                        }
+                        return <Instrument name={instrument} key={key} onInstrumentsChange={onInstrumentsChange} instruments={instruments} />
                     })
                 }
             </div>

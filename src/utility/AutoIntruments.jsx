@@ -6,5 +6,5 @@ export function AutoIntruments(inputText) {
 
     out = inputText.match(regex)
 
-    return out
+    return out ?? []
 }
