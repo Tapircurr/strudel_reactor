@@ -137,6 +137,7 @@ useEffect(() => {
                                     } else {
                                         instruments.push(e.target.value)
                                     }
+                                    handleProc()
                                 }
                                 }
                                 totalInstruments={totalInstruments}
