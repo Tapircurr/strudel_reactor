@@ -2,7 +2,7 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { useEffect, useRef } from "react";
 export default function BarChart({ data, width = 600, height = 300, margin = { top: 20, right: 20, bottom: 30, left: 40 } }) {
     const svgRef = useRef(null);
-    console.log("data = " + data)
+    //console.log("data = " + data)
 
     useEffect(() => {
         if (!data) return;
@@ -58,7 +58,8 @@ export default function BarChart({ data, width = 600, height = 300, margin = { t
             .transition()
             .duration(1)
             .attr("y", d => y(d.value))
-            .attr("height", d => innerHeight - y(d.value));
+            .attr("height", d => innerHeight - y(d.value))
+            .attr("fill", "blue")
 
         // update
         bars
@@ -67,7 +68,7 @@ export default function BarChart({ data, width = 600, height = 300, margin = { t
             .attr("x", d => x(d.key))
             .attr("width", x.bandwidth())
             .attr("y", d => y(d.value))
-            .attr("height", d => innerHeight - y(d.value));
+            .attr("height", d => innerHeight - y(d.value))
 
         // exit
         bars.exit().transition().duration(400).attr("y", innerHeight).attr("height", 0).remove();
@@ -81,7 +82,8 @@ export default function BarChart({ data, width = 600, height = 300, margin = { t
             .attr("x", d => x(d.key) + x.bandwidth() / 2)
             .attr("y", d => y(d.value) - 6)
             .attr("text-anchor", "middle")
-            .text(d => d.value);
+            .text(d => d.value)
+            .attr("fill", "white")
 
         labels
             .transition()

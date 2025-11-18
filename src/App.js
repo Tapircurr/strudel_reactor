@@ -15,7 +15,6 @@ import ProcButtons from './components/ProcButtons';
 import PreTextArea from './components/PreTextArea';
 import { PreProcess } from './utility/PreProcess';
 import { AutoIntruments } from './utility/AutoIntruments';
-import D3GraphComp from './components/D3GraphComp';
 import { JSONPar } from './utility/JSONPar';
 import { D3Parse } from './utility/D3Parse';
 import BarChart from './components/BarChart';
