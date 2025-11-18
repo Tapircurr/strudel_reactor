@@ -15,12 +15,12 @@ import ProcButtons from './components/ProcButtons';
 import PreTextArea from './components/PreTextArea';
 import { PreProcess } from './utility/PreProcess';
 import { AutoIntruments } from './utility/AutoIntruments';
+import D3GraphComp from './components/D3GraphComp';
+import { JSONPar } from './utility/JSONPar';
 
 let globalEditor = null;
 
-const handleD3Data = (event) => {
-    console.log(event.detail);
-};
+
 
 export default function StrudelDemo() {
 
@@ -39,6 +39,17 @@ export default function StrudelDemo() {
     const hasRun = useRef(false);
 
     const [reverb, setReverb] = useState(1)
+
+    const [d3Data, setD3Data] = useState()
+
+    const handleD3Data = (event) => {
+        console.log(event.detail);
+        //graphUpdateProc()
+    };
+
+    //const graphUpdateProc = useCallback(() => {
+    //    setD3Data(JSONPar(event.detail))
+    //},[])
 
     const handleProc = useCallback(() => {
         let outText = PreProcess({ inputText: songText, vol: vol, speed: speed, instruments: instruments, reverb: reverb })
@@ -116,12 +127,16 @@ export default function StrudelDemo() {
                             <PreTextArea defaultVal={songText} onChange={(e) => setSongText(e.target.value)} />
                         </div>
                         <div className="col-md-4">
-
-                            <nav>
-                                <ProcButtons onProc={handleProc} />
-                                <br />
-                                <PlayButtons onPlay={handlePlay} onStop={handleStop} />
-                            </nav>
+                            <div className="row">
+                                <nav>
+                                    <ProcButtons onProc={handleProc} />
+                                    <br />
+                                    <PlayButtons onPlay={handlePlay} onStop={handleStop} />
+                                </nav>
+                            </div>
+                            <div className="row">
+                               
+                            </div>
                         </div>
                         <div className="col-md-4">
                             <PlayControls
