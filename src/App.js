@@ -15,12 +15,13 @@ import ProcButtons from './components/ProcButtons';
 import PreTextArea from './components/PreTextArea';
 import { PreProcess } from './utility/PreProcess';
 import { AutoIntruments } from './utility/AutoIntruments';
+import { JSONPar } from './utility/JSONPar';
+import { D3Parse } from './utility/D3Parse';
+import BarChart from './components/BarChart';
 
 let globalEditor = null;
 
-const handleD3Data = (event) => {
-    console.log(event.detail);
-};
+
 
 export default function StrudelDemo() {
 
@@ -39,6 +40,20 @@ export default function StrudelDemo() {
     const hasRun = useRef(false);
 
     const [reverb, setReverb] = useState(1)
+
+    const [d3Data, setD3Data] = useState({})
+
+    const handleD3Data = useCallback((event) => {
+        console.log(event.detail);
+        if (event.detail && typeof event.detail === "object") {
+            setD3Data(prev => ({ ...prev, ...D3Parse(JSONPar(event.detail)) }));
+        }
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener("chart-update", handleD3Data);
+        return () => window.removeEventListener("chart-update", handleD3Data);
+    }, [handleD3Data]);
 
     const handleProc = useCallback(() => {
         let outText = PreProcess({ inputText: songText, vol: vol, speed: speed, instruments: instruments, reverb: reverb })
@@ -116,12 +131,16 @@ export default function StrudelDemo() {
                             <PreTextArea defaultVal={songText} onChange={(e) => setSongText(e.target.value)} />
                         </div>
                         <div className="col-md-4">
-
-                            <nav>
-                                <ProcButtons onProc={handleProc} />
-                                <br />
-                                <PlayButtons onPlay={handlePlay} onStop={handleStop} />
-                            </nav>
+                            <div className="row">
+                                <nav>
+                                    <ProcButtons onProc={handleProc} />
+                                    <br />
+                                    <PlayButtons onPlay={handlePlay} onStop={handleStop} />
+                                </nav>
+                            </div>
+                            <div className="row">
+                                <BarChart data={d3Data} />
+                            </div>
                         </div>
                         <div className="col-md-4">
                             <PlayControls

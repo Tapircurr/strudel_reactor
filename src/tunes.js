@@ -59,7 +59,7 @@ note(pick(arpeggiator1, "<0 1 2 3>/2"))
 .lpenv(3.3)
 .postgain(pick(gain_patterns, pattern))
 .gain(1)
-
+.log()
 
 drums:
 stack(
