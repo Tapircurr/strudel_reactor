@@ -44,18 +44,6 @@ export default function StrudelDemo() {
 
     const [d3Data, setD3Data] = useState({})
 
-    //let gData = {"cat": "2"}
-
-    //const handleD3Data = useCallback((event) => {
-    //    console.log(event.detail);
-    //    //setD3Data(5)
-    //    //setD3Data(JSONPar(event.detail))
-    //    //graphUpdateProc()
-    //    //gData = D3Parse(JSONPar(event.detail))
-    //    //console.log(d3Data)
-    //    //console.log(gData)
-    //},[]);
-
     const handleD3Data = useCallback((event) => {
         console.log(event.detail);
         if (event.detail && typeof event.detail === "object") {
@@ -63,16 +51,10 @@ export default function StrudelDemo() {
         }
     }, []);
 
-
-    // Listen for the custom D3 event using the user's handler
     useEffect(() => {
         window.addEventListener("chart-update", handleD3Data);
         return () => window.removeEventListener("chart-update", handleD3Data);
     }, [handleD3Data]);
-
-    //const graphUpdateProc = useCallback(() => {
-        
-    //},[])
 
     const handleProc = useCallback(() => {
         let outText = PreProcess({ inputText: songText, vol: vol, speed: speed, instruments: instruments, reverb: reverb })
