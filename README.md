@@ -50,3 +50,4 @@ Each instrument that is in the pretext area will automatically be given a mute b
 Shows a neat graph of how many times each note has been played in the las 100 notes!
 
 ##Demonstration Video
+[Video!](src/UNPH001StrudelDemo.mp4)
