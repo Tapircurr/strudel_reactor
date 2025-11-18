@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+##Strudel Demo!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the strudel demo!
 
-## Available Scripts
+Below are the features of the demo
 
-In the project directory, you can run:
+##Live Pretext
+This text area in the top left will automatically send strudel code down to the active strudle player as you type it!
 
-### `npm start`
+##Active Strudel Player
+Here strudel code is show and ready to be played! It will highlight the notes as they are played as all strudel players do!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+##Play Contols
+Here are the controls for the player
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##`Preprocess`
+Forcefully run a preprocess sending the live pretext down to the active strudel player.
+Should be unnessesary but just in case.
 
-### `npm test`
+##`Play`
+Runs a preprocess and plays the current song from the start.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##`Stop`
+Stops the current song
 
-### `npm run build`
+##Soundboard Controls
+Here are adjecstments you can make to the music, remember to stop and start it again to refresh it!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##`Set Speed`
+Sets the setcps value, remember to make sure that your code can take the value you enter!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##`Volume`
+Changes the volume of each instrument while keeping them at their relitive volume
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##`Reverb`
+Changes the reverb of each instrument while keeping them at their relitive reverb.
+Comes in 3 modes:
 
-### `npm run eject`
+No reverb 0
+Some reverb 1
+Lot of reverb 20
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This value is a multiplier on the reverb of each instrument that has reverb
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##`Mute Buttons`
+Dynamically get any instruments from the preprocess text area and then adds a '_' to mute them in the Active Strudel Player if they are muted
+Each instrument that is in the pretext area will automatically be given a mute button
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+##Note Graph
+Shows a neat graph of how many times each note has been played in the las 100 notes!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##Demonstration Video
