@@ -17,6 +17,8 @@ import { PreProcess } from './utility/PreProcess';
 import { AutoIntruments } from './utility/AutoIntruments';
 import D3GraphComp from './components/D3GraphComp';
 import { JSONPar } from './utility/JSONPar';
+import { D3Parse } from './utility/D3Parse';
+import BarChart from './components/BarChart';
 
 let globalEditor = null;
 
@@ -40,15 +42,36 @@ export default function StrudelDemo() {
 
     const [reverb, setReverb] = useState(1)
 
-    const [d3Data, setD3Data] = useState()
+    const [d3Data, setD3Data] = useState({})
 
-    const handleD3Data = (event) => {
+    //let gData = {"cat": "2"}
+
+    //const handleD3Data = useCallback((event) => {
+    //    console.log(event.detail);
+    //    //setD3Data(5)
+    //    //setD3Data(JSONPar(event.detail))
+    //    //graphUpdateProc()
+    //    //gData = D3Parse(JSONPar(event.detail))
+    //    //console.log(d3Data)
+    //    //console.log(gData)
+    //},[]);
+
+    const handleD3Data = useCallback((event) => {
         console.log(event.detail);
-        //graphUpdateProc()
-    };
+        if (event.detail && typeof event.detail === "object") {
+            setD3Data(prev => ({ ...prev, ...D3Parse(JSONPar(event.detail)) }));
+        }
+    }, []);
+
+
+    // Listen for the custom D3 event using the user's handler
+    useEffect(() => {
+        window.addEventListener("chart-update", handleD3Data);
+        return () => window.removeEventListener("chart-update", handleD3Data);
+    }, [handleD3Data]);
 
     //const graphUpdateProc = useCallback(() => {
-    //    setD3Data(JSONPar(event.detail))
+        
     //},[])
 
     const handleProc = useCallback(() => {
@@ -135,7 +158,7 @@ export default function StrudelDemo() {
                                 </nav>
                             </div>
                             <div className="row">
-                               
+                                <BarChart data={d3Data} />
                             </div>
                         </div>
                         <div className="col-md-4">

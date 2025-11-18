@@ -1,5 +1,5 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-function D3GraphComp(data) {
+function D3GraphComp({ data }) {
 
     buildGraph(data);
     
