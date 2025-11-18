@@ -1,6 +1,6 @@
 import Instrument from "./Instrument";
-function PlayControls({ volChange, onVolChange, speedChange, onSpeedChange, instruments, onInstrumentsChange, totalInstruments }) {
-    //console.log("totalInstrumentsx = " + totalInstruments)
+import ReverbDrop from "./ReverbDrop";
+function PlayControls({ volChange, onVolChange, speedChange, onSpeedChange, instruments, onInstrumentsChange, totalInstruments, reverbChange, onReverbChange }) {
     const isInstruments = instruments.length > 0
     return (
         <>
@@ -16,12 +16,17 @@ function PlayControls({ volChange, onVolChange, speedChange, onSpeedChange, inst
                 <label htmlFor="volumeRange" className="form-label">Volume</label>
                 <input type="range" className="form-range" min="0" max="1" step="0.01" onMouseUp={onVolChange} id="customRange3" />
 
+                { /* Reverb */}
+                <ReverbDrop reverb={reverbChange} onReverbChange={onReverbChange} />
+
                 {/* Instruments */}
                 {
                     totalInstruments.map((instrument, key) => {
                         return <Instrument name={instrument} key={key} onInstrumentsChange={onInstrumentsChange} instruments={instruments} />
                     })
                 }
+
+                
             </div>
         </>
     );

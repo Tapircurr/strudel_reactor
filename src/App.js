@@ -38,11 +38,13 @@ export default function StrudelDemo() {
 
     const hasRun = useRef(false);
 
+    const [reverb, setReverb] = useState(1)
+
     const handleProc = useCallback(() => {
-        let outText = PreProcess({ inputText: songText, vol: vol, speed: speed, instruments: instruments })
+        let outText = PreProcess({ inputText: songText, vol: vol, speed: speed, instruments: instruments, reverb: reverb })
         globalEditor.setCode(outText)
         setTotalInstruments(AutoIntruments(songText))
-    }, [instruments, songText, speed, vol])
+    }, [instruments, reverb, songText, speed, vol])
 
     const handlePlay = useCallback(() => {
         handleProc()
@@ -140,6 +142,7 @@ export default function StrudelDemo() {
                                 }
                                 }
                                 totalInstruments={totalInstruments}
+                                reverbChange={reverb} onReverbChange={(e) => setReverb(e.target.value)}
                             />
                         </div>
                     </div>
